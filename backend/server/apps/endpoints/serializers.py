@@ -20,7 +20,7 @@ class MLAlgorithmSerializer(serializers.ModelSerializer):
     current_status = serializers.SerializerMethodField(read_only=True)
 
     def get_current_status(self, mlalgorithm):
-        return MLAlgorithmStatus.objects.filter(parent_algorithm=mlalgorithm).latest('created_at').status
+        return MLAlgorithmStatus.objects.filter(parent_mlalgorithm=mlalgorithm).latest('created_at').status
 
     class Meta:
         model = MLAlgorithm

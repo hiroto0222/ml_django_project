@@ -23,13 +23,13 @@ from django.db import transaction
 class EndpointViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin,
                       viewsets.GenericViewSet):
     serializer_class = EndpointSerializer
-    query_set = Endpoint.objects.all()
+    queryset = Endpoint.objects.all()
 
 
 class MLAlgorithmViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin,
                          viewsets.GenericViewSet):
     serializer_class = MLAlgorithmSerializer
-    query_set = MLAlgorithm.objects.all()
+    queryset = MLAlgorithm.objects.all()
 
 
 def deactivate_other_statuses(instance):
@@ -47,7 +47,7 @@ def deactivate_other_statuses(instance):
 class MLAlgorithmStatusViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin,
                                viewsets.GenericViewSet, mixins.CreateModelMixin):
     serializer_class = MLAlgorithmStatusSerializer
-    query_set = MLAlgorithmStatus.objects.all()
+    queryset = MLAlgorithmStatus.objects.all()
 
     def perform_create(self, serializer):
         try:
@@ -62,4 +62,4 @@ class MLAlgorithmStatusViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin,
 class MLRequestViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin,
                        viewsets.GenericViewSet, mixins.UpdateModelMixin):
     serializer_class = MLRequestSerializer
-    query_set = MLRequest.objects.all()
+    queryset = MLRequest.objects.all()
